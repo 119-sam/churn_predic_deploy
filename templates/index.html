@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fafafa;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 12px 20px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #357ae8;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>AI Churn Prediction</h2>
+        <form action="/predict" method="post">
+
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br><br>
+
+            <label for="city">City:</label>
+            <select name="city" id="city">
+                <option value="Sacramento">Sacramento</option>
+                <option value="San Diego">San Diego</option>
+                <option value="San Francisco">San Francisco</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Uncommon">Uncommon</option>
+            </select><br><br>
+
+            <label for="senior_citizen">Senior Citizen:</label>
+            <select name="senior_citizen" id="senior_citizen">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="partner">Partner:</label>
+            <select name="partner" id="partner">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="dependents">Dependents:</label>
+            <select name="dependents" id="dependents">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+
+            <label for="phone_service">Phone Service:</label>
+            <select name="phone_service" id="phone_service">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="multiple_lines">Multiple Lines:</label>
+            <select name="multiple_lines" id="multiple_lines">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="internet_service">Internet Service:</label>
+            <select name="internet_service" id="internet_service">
+                <option value="DSL">DSL</option>
+                <option value="Fiber optic">Fiber optic</option>
+                <option value="Cable">Cable</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="online_security">Online Security:</label>
+            <select name="online_security" id="online_security">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="online_backup">Online Backup:</label>
+            <select name="online_backup" id="online_backup">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="device_protection">Device Protection:</label>
+            <select name="device_protection" id="device_protection">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="tech_support">Tech Support:</label>
+            <select name="tech_support" id="tech_support">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="streaming_tv">Streaming TV:</label>
+            <select name="streaming_tv" id="streaming_tv">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="streaming_movies">Streaming Movies:</label>
+            <select name="streaming_movies" id="streaming_movies">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+            <label for="contract">Contract:</label>
+            <select name="contract" id="contract">
+                <option value="Month-to-month">Month-to-month</option>
+                <option value="One year">One year</option>
+                <option value="Two year">Two year</option>
+            </select><br><br>
+
+            <label for="paperless_billing">Paperless Billing:</label>
+            <select name="paperless_billing" id="paperless_billing">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select><br><br>
+
+           <label for="payment_method">Payment Method:</label>
+          <select name="payment_method" id="payment_method">
+              <option value="Mailed check">Mailed check</option>
+              <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+              <option value="Credit card (automatic)">Credit card (automatic)</option>
+              <option value="Electronic check">Electronic check</option>
+          </select><br><br>
+            
+            <label for="tenure_months">Tenure (Months):</label>
+            <input type="number" name="tenure_months" required><br><br>
+
+            <label for="monthly_charges">Monthly Charges:</label>
+            <input type="number" name="monthly_charges" step="0.01" required><br><br>
+
+            <label for="total_charges">Total Charges:</label>
+            <input type="number" name="total_charges" step="0.01" required><br><br>
+
+            <label for="churn_score">Churn Score:</label>
+            <input type="number" name="churn_score" step="1" required><br><br>
+
+            <label for="cltv">CLTV:</label>
+            <input type="number" name="cltv" step="0.01" required><br><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
