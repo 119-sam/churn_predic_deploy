@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 from sklearn.base import BaseEstimator, TransformerMixin
+import sys
 
 # CleanFixer class (used in training pipeline)
 class CleanFixer(BaseEstimator, TransformerMixin):
@@ -26,6 +27,9 @@ class CleanFixer(BaseEstimator, TransformerMixin):
             X[self.city_col] = X[self.city_col].apply(lambda c: c if c in self.valid_cities else 'Other')
 
         return X
+
+sys.modules['__main__'].CleanFixer = CleanFixer
+
 
 # Load the model
 with open("model_2.pkl", "rb") as f:
