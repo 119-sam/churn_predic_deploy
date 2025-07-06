@@ -56,7 +56,5 @@ A Machine Learning web application that predicts whether a customer will churn (
 - HTML/CSS
 - Render (for deployment)
 
-🧠 Author
-Sam
 Feel free to ⭐ the repo if you liked it!
 
