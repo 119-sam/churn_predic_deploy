@@ -28,7 +28,8 @@ class CleanFixer(BaseEstimator, TransformerMixin):
         return X
 
 # Load the model
-model = pickle.load(open("model_2.pkl", "rb"))
+with open("model_2.pkl", "rb") as f:
+    model = pickle.load(f)
 
 # Expected columns
 expected_columns = [
