@@ -18,9 +18,13 @@ A Machine Learning web application that predicts whether a customer will churn (
 
 ## 📂 Project Structure
 ├── app.py # Flask application
+
 ├── model_2.pkl # Trained ML model with pipeline
+
 ├── requirements.txt # Python dependencies
+
 ├── templates/
+
 │ └── index.html # Web page template
 
 
